@@ -1,17 +1,11 @@
-import { Suspense } from "react";
-import { Routes, Route } from "react-router-dom";
-import Home from "./components/home";
-import ThinkerProfile from "./components/ThinkerProfile";
+import { Outlet } from 'react-router-dom';
+import Navigation from '@/components/Navigation';
 
-function App() {
+export default function App() {
   return (
-    <Suspense fallback={<p>Loading...</p>}>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/thinker/:id" element={<ThinkerProfile />} />
-      </Routes>
-    </Suspense>
+    <div className="min-h-screen bg-background">
+      <Navigation />
+      <Outlet />
+    </div>
   );
 }
-
-export default App;

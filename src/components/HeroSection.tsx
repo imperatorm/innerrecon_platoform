@@ -12,12 +12,13 @@ import {
 import { Search, TrendingUp } from "lucide-react";
 
 interface HeroSectionProps {
-  trendingTopics?: string[];
   onSearch?: (query: string) => void;
+  trendingTopics?: string[];
   backgroundImage?: string;
 }
 
-const HeroSection = ({
+export default function HeroSection({
+  onSearch = () => {},
   trendingTopics = [
     "Philosophy",
     "Science",
@@ -26,9 +27,8 @@ const HeroSection = ({
     "Economics",
     "Psychology",
   ],
-  onSearch = () => {},
   backgroundImage = "https://images.unsplash.com/photo-1507842217343-583bb7270b66?w=1512&h=400&fit=crop",
-}: HeroSectionProps) => {
+}: HeroSectionProps) {
   return (
     <div className="relative w-full h-[400px] bg-gray-50">
       {/* Background Image with Overlay */}
@@ -45,8 +45,7 @@ const HeroSection = ({
           Discover Influential Thinkers
         </h1>
         <p className="text-lg text-gray-200 mb-8 max-w-2xl">
-          Explore the minds that shaped our world through their revolutionary
-          ideas and enduring legacy
+          Explore the minds that shaped our world through their revolutionary ideas and enduring legacy
         </p>
 
         {/* Search Bar */}
@@ -55,6 +54,7 @@ const HeroSection = ({
             <Input
               placeholder="Search thinkers, topics, or eras..."
               className="h-12 bg-white/90 backdrop-blur-sm"
+              onChange={(e) => onSearch(e.target.value)}
             />
             <Button size="lg" className="h-12">
               <Search className="w-5 h-5" />
@@ -95,6 +95,4 @@ const HeroSection = ({
       </div>
     </div>
   );
-};
-
-export default HeroSection;
+}
