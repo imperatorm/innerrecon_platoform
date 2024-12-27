@@ -13,5 +13,5 @@ export default defineConfig({
       "@": path.resolve(__dirname, "./src"),
     },
   },
-  envDir: '.',  // Specify where to look for environment files
+  envDir: '.'
 })
